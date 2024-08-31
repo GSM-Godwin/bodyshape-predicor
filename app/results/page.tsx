@@ -1,45 +1,18 @@
 "use client";
 
-import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import ShapeResults from '../../components/ShapeResults';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import { CircleLoader } from 'react-spinners';
 
-const ResultsPage = () => {
-  const searchParams = useSearchParams();
-  const [shapeType, setShapeType] = useState<string | null>(null);
+const DynamicResultsPage = dynamic(() => import('../../components/ResultsPageContent'), {
+  ssr: false,
+  loading: () => <CircleLoader />,
+});
 
-  useEffect(() => {
-    const fetchShapeType = async () => {
-      if (searchParams) {
-        const measurements = {
-          shoulderWidth: searchParams.get('shoulderWidth'),
-          bustCircumference: searchParams.get('bustCircumference'),
-          waistCircumference: searchParams.get('waistCircumference'),
-          hipCircumference: searchParams.get('hipCircumference'),
-        };
-
-        const res = await fetch('/api/shape', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(measurements),
-        });
-
-        const data = await res.json();
-        setShapeType(data.shapeType);
-      }
-    };
-
-    fetchShapeType();
-  }, [searchParams]);
-
+export default function SuspenseWrapper() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      {shapeType ? <ShapeResults shapeType={shapeType} /> : <div><CircleLoader size="10vw" /></div>}
-    </div>
+    <Suspense fallback={<CircleLoader />}>
+      <DynamicResultsPage />
+    </Suspense>
   );
-};
-
-export default ResultsPage;
+}

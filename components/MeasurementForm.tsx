@@ -29,13 +29,16 @@ const MeasurementForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg max-w-lg mx-auto">
-      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Enter Your Measurements</h2>
+      <h1 className='text-2xl font-bold mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-blue-700'>Blouse Recommender</h1>
+      <h2 className="text-2xl font-bold mb-2 text-center text-gray-800">Enter Your Measurements</h2>
+      <p className='italic text-gray-700 text-center mb-6 text-[12px]'>NB: All measurements should be in inches.</p>
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Shoulder Width</label>
           <input
             type="number"
             name="shoulderWidth"
+            min="0"
             value={measurements.shoulderWidth}
             onChange={handleChange}
             className="input-field"
@@ -48,6 +51,7 @@ const MeasurementForm = () => {
           <input
             type="number"
             name="bustCircumference"
+            min="0"
             value={measurements.bustCircumference}
             onChange={handleChange}
             className="input-field"
@@ -60,6 +64,7 @@ const MeasurementForm = () => {
           <input
             type="number"
             name="waistCircumference"
+            min="0"
             value={measurements.waistCircumference}
             onChange={handleChange}
             className="input-field"
@@ -72,6 +77,7 @@ const MeasurementForm = () => {
           <input
             type="number"
             name="hipCircumference"
+            min="0"
             value={measurements.hipCircumference}
             onChange={handleChange}
             className="input-field"
@@ -81,7 +87,7 @@ const MeasurementForm = () => {
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+          className="w-ful py-2 px-4 rounded-lg btn-submit transition-colors"
         >
           Submit
         </button>
