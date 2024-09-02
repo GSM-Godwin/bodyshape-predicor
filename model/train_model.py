@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from keras.models import Sequential
-from keras.layers import Dense
+from keras.models import Sequential # type: ignore
+from keras.layers import Dense # type: ignore
 import pickle
 
 # Load your dataset

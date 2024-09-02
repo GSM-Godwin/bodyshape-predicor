@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import numpy as np
-from keras.models import load_model
+from keras.models import load_model # type: ignore
 import pickle
 
 # Load the trained model and scaler
