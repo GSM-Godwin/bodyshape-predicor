@@ -22,6 +22,14 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
   const [necklineRec, setNecklineRec] = useState<string>('');
   const [primaryShape, setPrimaryShape] = useState<string>('');
 
+  const bodyShapeDescriptions: any = {
+    hourglass: 'Balanced bust and hips with a well-defined waist.',
+    pear: 'Wider hips with a narrower bust and shoulders.',
+    apple: 'Broad shoulders and bust with weight around the midsection; slimmer hips.',
+    rectangle: 'Bust, waist, and hips are similar in width with little waist definition.',
+    invertedTriangle: 'Wider shoulders or bust with narrower hips.'
+  };
+
   useEffect(() => {
     // Determine the body shape with the highest percentage
     const maxShape = Object.keys(shapePercentages).reduce((a, b) => 
@@ -72,7 +80,7 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
               6. Avoid tucking tops into trousers or skirts unless the bottoms have volume.`,
             necklineRec: 'To create curves, choose round necklines like scoop or jewel necklines. Lower, wider necklines such as wide V, slash, scoop, or sweetheart necklines lengthen the shoulder and bust area. Embellishments like big collars, lace trims, and ruffles can add volume and draw attention upwards. For a slender look, go for narrow necklines like turtlenecks, mandarin, crew, funnel, and halter necklines, and define the waist. Avoid square and straight necklines as they can add squareness to your body frame.',
           };
-        case 'inverted triangle':
+        case 'invertedTriangle':
           return {
             styleGuide: `1. Soften broad shoulder lines with soft, draping, and weighty fabrics.
               2. Avoid wide necklines and strong shoulder details (e.g., shoulder pads) as they may broaden the shoulders.
@@ -108,7 +116,7 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
 
   return (
     <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg mx-auto">
-      <h1 className='text-xl md:text-2xl font-bold mb-3 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-blue-700'>Blouse Recommender</h1>
+      <h1 className='text-xl md:text-2xl font-bold mb-3 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-blue-700'>Body Predictor and Style Recommender</h1>
       <h2 className="text-lg md:text-2xl mb-2 text-gray-800">
         Based on your measurements, we've identified your body shape as: { }
         {Object.entries(shapePercentages)
@@ -128,7 +136,7 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
 
 
       <div className="space-y-6">
-        {(widerShoulders || fullerBust || slimmerHips) && (
+        {/* {(widerShoulders || fullerBust || slimmerHips) && (
           <div>
             <h3 className="text-gray-700">Alongside this, you have</h3>
             <p className="text-gray-700">
@@ -148,9 +156,21 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
               })()}
             </p>
           </div>
-        )}
+        )} */}
         <div>
-          <h3 className="text-lg font-semibold text-gray-700">Neckline Recommendation</h3>
+          <p className="text-gray-600 whitespace-pre-line note">
+              <span className='font-semibold text-gray-800'>{primaryShape}: {bodyShapeDescriptions[primaryShape.toLowerCase()]} <br /></span>
+              {Object.keys(bodyShapeDescriptions)
+                .filter(shape => shape !== primaryShape.toLowerCase())
+                .map((shape, index) => (
+                  <span className='text-[14px]' key={index}>
+                    <span className='font-semibold'>{shape.charAt(0).toUpperCase() + shape.slice(1)}: </span>
+                    {bodyShapeDescriptions[shape]} <br />
+                  </span>
+                ))
+              }
+            </p>
+          <h3 className="text-lg font-semibold text-gray-700 mt-10">Neckline Recommendation</h3>
           <Image 
             src={NecklinesImg} 
             alt='Neckline Vocabulary' 
