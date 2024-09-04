@@ -25,6 +25,7 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
 }) => {
   const [styleGuide, setStyleGuide] = useState<string>('');
   const [necklineRec, setNecklineRec] = useState<string>('');
+  const [influencer, setInfluencer] = useState<string>('');
   const [primaryShape, setPrimaryShape] = useState<string>('');
 
   const bodyShapeImages: { [key: string]: any } = {
@@ -67,6 +68,11 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
             9. Stay away from embellished bottoms to draw less attention to the lower body.
             10. Skip details, patterns, pockets on your thigh and hip area, and belts on your hips for a smoother look overall.`,
             necklineRec: 'Wide necklines should be used to optically enlarge the pear body shape\'s shoulder and bust. Choose lower, wider necklines, such as square, bateau, and Sabrina necklines. Off-shoulder necklines add a few inches to your upper torso.',
+            influencers: (
+              <span>
+                Fashion influencers like <a href="https://www.instagram.com/amymaha_?igsh=MTZoc3N5ZWVrZG0xaA==" className='text-blue-700 underline' target='_top'>Amy Maha</a> are of rectangle body shape.
+              </span>
+            )
           };
         case 'apple':
           return {
@@ -80,6 +86,11 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
             8. Avoid excessive fabric around the midsection.
             9. Wide-leg, flowing trousers are very flattering on an apple body shape as they balance out the wider midsection with the slimmer legs.`,
             necklineRec: 'When choosing a neckline, opt for a style that is wide and low. A wide neckline will create the illusion of broad shoulders, while a low neckline will elongate the body and provide a flattering break in the chest area. V-Neckline is a great choice.',
+            influencers: (
+              <span>
+                Fashion influencers like <a href="https://www.instagram.com/amymaha_?igsh=MTZoc3N5ZWVrZG0xaA==" className='text-blue-700 underline' target='_top'>Amy Maha</a> are of rectangle body shape.
+              </span>
+            )
           };
         case 'rectangle':
           return {
@@ -91,8 +102,13 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
               4. Wear bright colors on your upper and lower body, but avoid them around the waist, instead wear darker colors around the waist area.
               5. Avoid clothes that end at the waist or emphasize it.
               6. Avoid tucking tops into trousers or skirts unless the bottoms have volume.`,
-            necklineRec: 'To create curves, choose round necklines like scoop or jewel necklines. Lower, wider necklines such as wide V, slash, scoop, or sweetheart necklines lengthen the shoulder and bust area. Embellishments like big collars, lace trims, and ruffles can add volume and draw attention upwards. For a slender look, go for narrow necklines like turtlenecks, mandarin, crew, funnel, and halter necklines, and define the waist. Avoid square and straight necklines as they can add squareness to your body frame.',
-          };
+              necklineRec: 'To create curves, choose round necklines like scoop or jewel necklines. Lower, wider necklines such as wide V, slash, scoop, or sweetheart necklines lengthen the shoulder and bust area. Embellishments like big collars, lace trims, and ruffles can add volume and draw attention upwards. For a slender look, go for narrow necklines like turtlenecks, mandarin, crew, funnel, and halter necklines, and define the waist. Avoid square and straight necklines as they can add squareness to your body frame.',
+              influencers: (
+                <span>
+                  Fashion influencers like <a href="https://www.instagram.com/amymaha_?igsh=MTZoc3N5ZWVrZG0xaA==" className='text-blue-700 underline' target='_top'>Amy Maha</a> are of rectangle body shape.
+                </span>
+              )
+            };
         case 'invertedTriangle':
           return {
             styleGuide: `1. Soften broad shoulder lines with soft, draping, and weighty fabrics.
@@ -104,6 +120,11 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
               7. Avoid skinny and tight trousers, as well as narrowing hemlines that visually reduce the lower body.
               8. Avoid cropped shirts that end at the waist and details or embellishments around the upper body and shoulder area.`,
             necklineRec: 'When choosing a neckline, opt for slim and long styles to visually reduce the width of the upper body. Deep and narrow scoop, U or V-necklines are great options. Asymmetric styles can help break up the chest vertically, while halter necks can help elongate the silhouette for those with a small bust. It is best to avoid wide and low necklines such as off-shoulder, bateau, square, and Sabrina styles, as they can add to the width of the shoulder line.',
+            influencers: (
+              <span>
+                Fashion influencers like <a href="https://www.instagram.com/amymaha_?igsh=MTZoc3N5ZWVrZG0xaA==" className='text-blue-700 underline' target='_top'>Amy Maha</a> are of rectangle body shape.
+              </span>
+            )
           };
         case 'hourglass':
           return {
@@ -113,18 +134,25 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
               3. Refrain from wearing shapeless and loose-fitting clothing. These types of garments can overwhelm your frame and detract from your natural body shape.
               4. Avoid eye-catching embellishments that add unnecessary volume or bulk. This includes steering clear of big ruffles, bows, or other details that may disrupt the balance of your upper body without providing a flattering effect.`,
             necklineRec: 'Slightly rounded styles like oval, deep oval, rounded, or jewel necklines are great because they are not too wide or too narrow and do not draw attention. Lower and wider necklines like scoop, sweetheart, V-neck, and off-the-shoulder are also good options.',
+            influencers: (
+              <span>
+                Fashion influencers like <a href="https://www.instagram.com/amymaha_?igsh=MTZoc3N5ZWVrZG0xaA==" className='text-blue-700 underline' target='_top'>Amy Maha</a> are of rectangle body shape.
+              </span>
+            )
           };
         default:
           return {
             styleGuide: 'No specific styling tips available for this shape.',
             necklineRec: 'No specific neckline recommendation available for this shape.',
+            influencers: 'No specific influencer available for this shape'
           };
       }
     };
 
-    const recommendations = getRecommendations(maxShape);
+    const recommendations: {styleGuide: string, necklineRec: string, influencers: any} = getRecommendations(maxShape);
     setStyleGuide(recommendations.styleGuide);
     setNecklineRec(recommendations.necklineRec);
+    setInfluencer(recommendations.influencers)
   }, [shapePercentages]);
 
   return (
@@ -203,6 +231,7 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
         <div>
           <h3 className="text-lg font-semibold text-gray-700">Style Guide</h3>
           <p className="text-gray-600 whitespace-pre-line">{styleGuide}</p>
+          <p className="text-gray-600 whitespace-pre-line mt-2">{influencer}</p>
         </div>
         <div>
           <h3 className="italic text-gray-700">Our goal is to provide styling recommendations that flatter your figure and highlight your best attributes, ensuring you look and feel your best.</h3>

@@ -3,6 +3,10 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+import Body from "@/assets/Body.jpg";
+import Measurement from "@/assets/Measurement.jpeg";
+import Image from 'next/image';
+
 const MeasurementForm = () => {
   const [measurements, setMeasurements] = useState({
     shoulderWidth: '',
@@ -32,6 +36,7 @@ const MeasurementForm = () => {
       <h1 className='text-2xl font-bold mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-blue-700'>Body Shape Predictor and Style Recommender</h1>
       <h2 className="text-2xl font-bold mb-2 text-center text-gray-800">Enter Your Measurements</h2>
       <p className='italic text-gray-700 text-center mb-6 text-[12px]'>NB: All measurements should be in inches.</p>
+      
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Shoulder Width</label>
@@ -85,6 +90,13 @@ const MeasurementForm = () => {
             required
           />
         </div>
+        <Image 
+          src={Measurement}
+          alt='measurement'
+          loading='lazy'
+          placeholder='blur'
+          className='mt-5'
+        />
         <button
           type="submit"
           className="w-ful py-2 px-4 rounded-lg btn-submit transition-colors"

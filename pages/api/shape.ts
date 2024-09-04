@@ -6,6 +6,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // Send measurements to the Python server and get the shape type
     const response = await fetch('https://bodyshape-predicor.onrender.com/shape', {
+    // const response = await fetch('http://localhost:8000/shape', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
