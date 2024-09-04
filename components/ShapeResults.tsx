@@ -70,7 +70,7 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
             necklineRec: 'Wide necklines should be used to optically enlarge the pear body shape\'s shoulder and bust. Choose lower, wider necklines, such as square, bateau, and Sabrina necklines. Off-shoulder necklines add a few inches to your upper torso.',
             influencers: (
               <span>
-                Fashion influencers like <a href="https://www.instagram.com/amymaha_?igsh=MTZoc3N5ZWVrZG0xaA==" className='text-blue-700 underline' target='_top'>Amy Maha</a> are of rectangle body shape.
+                Fashion influencers like <a href="https://www.instagram.com/ukaraobong_?igsh=MXAyOTAxOHg2ZThtZg==" className='text-blue-700 underline' target='_top'>Ukara Ubong</a> are of pear body shape.
               </span>
             )
           };
@@ -88,7 +88,7 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
             necklineRec: 'When choosing a neckline, opt for a style that is wide and low. A wide neckline will create the illusion of broad shoulders, while a low neckline will elongate the body and provide a flattering break in the chest area. V-Neckline is a great choice.',
             influencers: (
               <span>
-                Fashion influencers like <a href="https://www.instagram.com/amymaha_?igsh=MTZoc3N5ZWVrZG0xaA==" className='text-blue-700 underline' target='_top'>Amy Maha</a> are of rectangle body shape.
+                Fashion influencers like <a href="https://www.instagram.com/amymaha_?igsh=MTZoc3N5ZWVrZG0xaA==" className='text-blue-700 underline' target='_top'>Amy Maha</a> are of apple body shape.
               </span>
             )
           };
@@ -122,7 +122,7 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
             necklineRec: 'When choosing a neckline, opt for slim and long styles to visually reduce the width of the upper body. Deep and narrow scoop, U or V-necklines are great options. Asymmetric styles can help break up the chest vertically, while halter necks can help elongate the silhouette for those with a small bust. It is best to avoid wide and low necklines such as off-shoulder, bateau, square, and Sabrina styles, as they can add to the width of the shoulder line.',
             influencers: (
               <span>
-                Fashion influencers like <a href="https://www.instagram.com/amymaha_?igsh=MTZoc3N5ZWVrZG0xaA==" className='text-blue-700 underline' target='_top'>Amy Maha</a> are of rectangle body shape.
+                Fashion influencers like <a href="https://www.instagram.com/amymaha_?igsh=MTZoc3N5ZWVrZG0xaA==" className='text-blue-700 underline' target='_top'>Amy Maha</a> are of inverted triangle body shape.
               </span>
             )
           };
@@ -136,7 +136,7 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
             necklineRec: 'Slightly rounded styles like oval, deep oval, rounded, or jewel necklines are great because they are not too wide or too narrow and do not draw attention. Lower and wider necklines like scoop, sweetheart, V-neck, and off-the-shoulder are also good options.',
             influencers: (
               <span>
-                Fashion influencers like <a href="https://www.instagram.com/amymaha_?igsh=MTZoc3N5ZWVrZG0xaA==" className='text-blue-700 underline' target='_top'>Amy Maha</a> are of rectangle body shape.
+                Fashion influencers like <a href="https://www.instagram.com/daaiizy?igsh=a2xtemU0ZzUxMGk4" className='text-blue-700 underline' target='_top'>Erastus Chiwenwa</a> are of hourglass body shape.
               </span>
             )
           };
@@ -162,17 +162,21 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
         Based on your measurements, we've identified your body shape as: { }
         {Object.entries(shapePercentages)
           .filter(([shape, percentage]) => {
-            // Convert the percentage to a number and check if it's greater than 0
             const numericPercentage = parseFloat(percentage.toString());
-            console.log(`${shape}: ${numericPercentage}%`); // Log the shape and numeric percentage
+            console.log(`${shape}: ${numericPercentage}%`);
             return numericPercentage > 1;
           })
-          .map(([shape, percentage], index, array) => (
-            <span key={shape} className="font-bold">
-              {shape} ({percentage}){index < array.length - 1 ? ', ' : '.'}
-            </span>
-          ))}
+          .sort((a, b) => parseFloat(b[1].toString()) - parseFloat(a[1].toString())) // Sort descending by percentage
+          .map(([shape, percentage], index, array) => {
+            const maxPercentage = parseFloat(array[0][1].toString());
+            return (
+              <span key={shape} className={parseFloat(percentage.toString()) === maxPercentage ? "font-bold" : ""}>
+                {shape} ({percentage}){index < array.length - 1 ? ', ' : '.'}
+              </span>
+            );
+          })}
       </h2>
+
 
 
 
@@ -199,7 +203,7 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
           </div>
         )} */}
         <div>
-          <p className="text-gray-600 whitespace-pre-line note">
+          <p className="text-gray-600 whitespace-pre-line leading-8">
               <span className='font-semibold text-gray-800'>{primaryShape}: {bodyShapeDescriptions[primaryShape.toLowerCase()]} <br /></span>
               {Object.keys(bodyShapeDescriptions)
                 .filter(shape => shape !== primaryShape.toLowerCase())
@@ -211,7 +215,7 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
                 ))
               }
             </p>
-          <h3 className="text-lg font-semibold text-gray-700 mt-10">Neckline Recommendation</h3>
+          <h3 className="text-lg font-semibold text-gray-700 mt-10 leading-8">Neckline Recommendation</h3>
           {/* <Image 
             src={NecklinesImg} 
             alt='Neckline Vocabulary' 
@@ -226,15 +230,13 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
             // placeholder='blur'
             className="mx-auto"
           />
-          <p className="text-gray-600">{necklineRec}</p>
+          <br />9+
+          <p className="text-gray-600 leading-8">{necklineRec}</p>
         </div>
         <div>
           <h3 className="text-lg font-semibold text-gray-700">Style Guide</h3>
-          <p className="text-gray-600 whitespace-pre-line">{styleGuide}</p>
-          <p className="text-gray-600 whitespace-pre-line mt-2">{influencer}</p>
-        </div>
-        <div>
-          <h3 className="italic text-gray-700">Our goal is to provide styling recommendations that flatter your figure and highlight your best attributes, ensuring you look and feel your best.</h3>
+          <p className="text-gray-600 whitespace-pre-line leading-8">{styleGuide}</p>
+          <p className="text-gray-600 whitespace-pre-line mt-2 leading-8">{influencer}</p>
         </div>
       </div>
     </div>
