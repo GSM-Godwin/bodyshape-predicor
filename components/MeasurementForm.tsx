@@ -32,14 +32,16 @@ const MeasurementForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg max-w-lg mx-auto">
+    <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg max-w-lg mx-auto my-2 md:my-5 lg:my-10">
       <h1 className='text-2xl font-bold mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-blue-700'>Body Shape Predictor and Style Recommender</h1>
       <h2 className="text-2xl font-bold mb-2 text-center text-gray-800">Enter Your Measurements</h2>
-      <p className='italic text-gray-700 text-center mb-6 text-[12px]'>NB: All measurements should be in inches.</p>
+      <p className='italic text-gray-700 text-center mb-6 text-[12px]'>NB: All measurements should be in inches. <br /> Kindly click on the body parts or scroll to the bottom of this page for a preview of the body parts.</p>
       
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Shoulder Width</label>
+          <a href="#image">
+            <label className="block text-sm font-medium text-gray-700 mb-2 cursor-pointer">Shoulder Width</label>
+          </a>
           <input
             type="number"
             name="shoulderWidth"
@@ -52,7 +54,9 @@ const MeasurementForm = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Bust Circumference</label>
+          <a href="#image">
+            <label className="block text-sm font-medium text-gray-700 mb-2 cursor-pointer">Bust Circumference</label>
+          </a>
           <input
             type="number"
             name="bustCircumference"
@@ -65,7 +69,9 @@ const MeasurementForm = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Waist Circumference</label>
+          <a href="#image">
+            <label className="block text-sm font-medium text-gray-700 mb-2 cursor-pointer">Waist Circumference</label>
+          </a>
           <input
             type="number"
             name="waistCircumference"
@@ -78,7 +84,9 @@ const MeasurementForm = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Hip Circumference</label>
+          <a href="#image">
+            <label className="block text-sm font-medium text-gray-700 mb-2 cursor-pointer">Hip Circumference</label>
+          </a>
           <input
             type="number"
             name="hipCircumference"
@@ -90,19 +98,20 @@ const MeasurementForm = () => {
             required
           />
         </div>
-        <Image 
-          src={Measurement}
-          alt='measurement'
-          loading='lazy'
-          placeholder='blur'
-          className='mt-5'
-        />
         <button
           type="submit"
           className="w-ful py-2 px-4 rounded-lg btn-submit transition-colors"
         >
           Submit
         </button>
+        <Image 
+          src={Measurement}
+          alt='measurement'
+          loading='lazy'
+          placeholder='blur'
+          className='mt-5'
+          id='image'
+        />
       </div>
     </form>
   );
