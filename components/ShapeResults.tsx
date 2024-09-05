@@ -157,7 +157,7 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
 
   return (
     <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg mx-auto my-2 md:my-5 lg:my-10">
-      <h1 className='text-xl md:text-2xl font-bold mb-3 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-blue-700'>Body Shape Predictor and Style Recommender</h1>
+      <h1 className='text-xl md:text-2xl font-bold mb-3 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-blue-700'>Body Shape Classifier and Style Recommender</h1>
       <h2 className="text-lg md:text-2xl mb-2 text-gray-800">
         Based on your measurements, we've identified your body shape as: { }
         {Object.entries(shapePercentages)
