@@ -33,7 +33,7 @@ const MeasurementForm = () => {
   
   return (
     <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg max-w-lg mx-auto my-2 md:my-5 lg:my-10">
-      <h1 className='text-2xl font-bold mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-blue-700'>Body Shape Predictor and Style Recommender</h1>
+      <h1 className='text-2xl font-bold mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-600 to-blue-700'>Body Shape Classifier and Style Recommender</h1>
       <h2 className="text-2xl font-bold mb-2 text-center text-gray-800">Enter Your Measurements</h2>
       <p className='italic text-gray-700 text-center mb-6 text-[12px]'>NB: All measurements should be in inches.</p>
       
