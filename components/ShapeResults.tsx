@@ -230,7 +230,7 @@ const ShapeResults: React.FC<ShapeResultsProps> = ({
             // placeholder='blur'
             className="mx-auto"
           />
-          <br />9+
+          <br />
           <p className="text-gray-600 leading-8">{necklineRec}</p>
         </div>
         <div>
